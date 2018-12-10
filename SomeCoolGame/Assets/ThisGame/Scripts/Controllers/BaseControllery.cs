@@ -22,6 +22,6 @@ namespace Game.Controllers
 		{
 			_enabled = false;
 		}
-		}
+	}
 }
 

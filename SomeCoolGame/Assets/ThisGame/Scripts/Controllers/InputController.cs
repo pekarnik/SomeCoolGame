@@ -7,6 +7,8 @@ namespace Game.Controllers
 	{
 
 		private bool _isActiveFlashlight = false;
+		private bool _isSelectWeapons = true;
+		private int _indexWeapons=0;
 		public void Update()
 		{
 			{
@@ -22,6 +24,23 @@ namespace Game.Controllers
 						Main.Instance.GetFlashlightController.Off();
 					}
 				}
+				if(Input.GetKeyDown(KeyCode.Alpha1))
+				{
+					_indexWeapons = 0;
+					_isSelectWeapons = false;
+				}
+				if(Input.GetKeyDown(KeyCode.Alpha2))
+				{
+					_indexWeapons = 1;
+					_isSelectWeapons = false;
+				}
+				if (_isSelectWeapons) return;
+				if(Main.Instance.GetManagerObject.GetWeaponsList[_indexWeapons])
+				{
+					Main.Instance.GetWeaponsController.On(Main.Instance.GetManagerObject.GetWeaponsList[_indexWeapons],
+						Main.Instance.GetManagerObject.GetAmmunitionList[_indexWeapons]);
+				}
+				_isSelectWeapons = true;
 			}
 		}
 	}

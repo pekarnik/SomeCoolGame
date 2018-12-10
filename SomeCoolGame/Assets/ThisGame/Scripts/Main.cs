@@ -2,6 +2,7 @@
 using System.Collections;
 using Game.Controllers;
 using Game.Objects;
+using Game.Helpers;
 namespace Game
 {
 	public sealed class Main : MonoBehaviour
@@ -11,6 +12,14 @@ namespace Game
 		private InputController _inputController;
 		private FlashlightController _flashlightController;
 		private FlashlightUIText _flText;
+		private WeaponsController _weaponsController;
+		private ObjectManager _objectManager;
+		public enum MouseButton
+		{
+			LeftButton,
+			RightButton,
+			CenterButton
+		}
 		void Start()
 		{
 			Instance = this;
@@ -20,6 +29,9 @@ namespace Game
 			_flashlightController =
 				_controllersGameObject.AddComponent<FlashlightController>();
 			_flText = _controllersGameObject.AddComponent<FlashlightUIText>();
+			_weaponsController =
+				_controllersGameObject.AddComponent<WeaponsController>();
+			_objectManager = GetComponent<ObjectManager>();
 		}
 		#region Property
 		public FlashlightController GetFlashlightController
@@ -31,6 +43,8 @@ namespace Game
 			return _inputController;
 		}
 		public static Main Instance { get; private set; }
+		public ObjectManager GetManagerObject { get { return _objectManager; } }
+		public WeaponsController GetWeaponsController { get { return _weaponsController; }  }
 		#endregion
 	}
 }

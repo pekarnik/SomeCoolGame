@@ -19,7 +19,14 @@ namespace Game.Objects
 		private Rigidbody _rigidbody;
 		private string _name;
 		private bool _isVisible;
-		private bool _freeze;		
+		private bool _freeze;
+		public bool Freeze
+		{
+			get
+			{
+				return _freeze;
+			}
+		}
 		#region Property
 		public string Name
 		{
@@ -143,13 +150,6 @@ namespace Game.Objects
 		}
 		#endregion
 		#region PrivateFunction
-		public bool Freeze
-		{
-			get
-			{
-				return _freeze;
-			}
-		}
 		private void AskLayer(Transform obj, int lvl)
 		{
 			obj.gameObject.layer = lvl;
